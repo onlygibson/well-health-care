@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Well Health Care</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Well Health Care</div>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#appointments">Appointments</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Modern Healthcare Appointment Platform</h1>
+      <p>
+        Book appointments, connect with healthcare professionals, and manage patient care from one secure platform.
+      </p>
+      <a href="#appointments" class="btn">Book Appointment</a>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <h2>Healthcare Services</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Primary Care</h3>
+        <p>General health consultations and routine checkups.</p>
+      </div>
+      <div class="card">
+        <h3>Telehealth</h3>
+        <p>Virtual appointments with healthcare providers.</p>
+      </div>
+      <div class="card">
+        <h3>Lab Requests</h3>
+        <p>Schedule and manage diagnostic lab services.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="appointments" class="section">
+    <h2>Book an Appointment</h2>
+    <form id="appointmentForm" class="form">
+      <input type="text" id="name" placeholder="Full Name" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="text" id="service" placeholder="Service Needed" required />
+      <input type="date" id="date" required />
+      <button type="submit">Submit Appointment</button>
+    </form>
+    <p id="message"></p>
+  </section>
+
+  <section id="contact" class="section contact">
+    <h2>Contact</h2>
+    <p>Email: support@wellhealthcare.local</p>
+    <p>Phone: +1 (555) 123-4567</p>
+  </section>
+
+  <footer>
+    <p>© 2026 Well Health Care.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
