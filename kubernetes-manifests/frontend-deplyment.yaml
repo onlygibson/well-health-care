@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: well-health-frontend
+  namespace: well-health-care
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: well-health-frontend
+  template:
+    metadata:
+      labels:
+        app: well-health-frontend
+    spec:
+      containers:
+        - name: frontend
+          image: well-health-frontend:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
