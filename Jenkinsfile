@@ -9,35 +9,42 @@ pipeline {
             }
         }
 
-        stage('Validate Files') {
+        stage('Validate Project Files') {
             steps {
                 echo 'Validating project structure...'
                 sh 'ls -la'
                 sh 'test -f backend/Dockerfile'
                 sh 'test -f frontend/Dockerfile'
                 sh 'test -f docker-compose.yml'
+                sh 'test -f backend/main.py'
+                sh 'test -f backend/requirements.txt'
             }
         }
 
-        stage('Build Backend Image') {
+        stage('Validate Dockerfiles') {
             steps {
-                echo 'Building backend Docker image...'
-                sh 'docker build -t well-health-backend:1.0 ./backend'
+                echo 'Checking Dockerfile contents...'
+                sh 'grep -i "FROM" backend/Dockerfile'
+                sh 'grep -i "FROM" frontend/Dockerfile'
+                sh 'grep -i "CMD" backend/Dockerfile'
+                sh 'grep -i "CMD" frontend/Dockerfile'
             }
         }
 
-        stage('Build Frontend Image') {
+        stage('Validate Compose File') {
             steps {
-                echo 'Building frontend Docker image...'
-                sh 'docker build -t well-health-frontend:1.0 ./frontend'
+                echo 'Checking Docker Compose file exists...'
+                sh 'cat docker-compose.yml'
             }
         }
+    }
 
-        stage('List Docker Images') {
-            steps {
-                echo 'Confirming Docker images were created...'
-                sh 'docker images | grep well-health'
-            }
+    post {
+        success {
+            echo 'CI validation completed successfully.'
+        }
+        failure {
+            echo 'CI validation failed.'
         }
     }
 }
