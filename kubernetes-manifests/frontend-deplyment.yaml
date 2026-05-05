@@ -13,9 +13,21 @@ spec:
       labels:
         app: well-health-frontend
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: frontend
           image: well-health-frontend:1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
+          securityContext:
+            allowPrivilegeEscalation: false
+            seccompProfile:
+              type: RuntimeDefault
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
